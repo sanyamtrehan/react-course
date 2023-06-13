@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 import classes from "./AddUser.module.css";
 import { useState } from "react";
 
-const AddUser = () => {
+const AddUser = (props) => {
   const [enteredUsername, setEnteredUsername] = useState("");
   const [enteredAge, setEnteredAge] = useState("");
 
@@ -16,7 +16,7 @@ const AddUser = () => {
     if (+enteredAge < 1) {
       return;
     }
-    console.log(enteredUsername, enteredAge);
+    props.onAddUsers(enteredUsername, enteredAge);
     setEnteredUsername("");
     setEnteredAge("");
   };
