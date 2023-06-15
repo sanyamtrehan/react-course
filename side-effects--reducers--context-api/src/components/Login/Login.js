@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useReducer, useState } from "react";
+import { useContext, useEffect, useReducer, useState, useRef } from "react";
 
 import Card from "../UI/Card/Card";
 import classes from "./Login.module.css";
@@ -78,15 +78,25 @@ const Login = () => {
     dispatchPassword({ type: "INPUT_BLUR" });
   };
 
+  const emailInputRef = useRef();
+  const passwordInputRef = useRef();
+
   const submitHandler = (event) => {
     event.preventDefault();
-    ctx.onLogin(emailState.value, passwordState.value);
+    if (formIsValid) {
+      ctx.onLogin(emailState.value, passwordState.value);
+    } else if (!emailIsValid) {
+      emailInputRef.current.focus();
+    } else {
+      passwordInputRef.current.focus();
+    }
   };
 
   return (
     <Card className={classes.login}>
       <form onSubmit={submitHandler}>
         <Input
+          ref={emailInputRef}
           id="email"
           type="email"
           label="E-Mail"
@@ -97,6 +107,7 @@ const Login = () => {
         />
 
         <Input
+          ref={passwordInputRef}
           id="password"
           type="password"
           label="Password"
@@ -107,7 +118,7 @@ const Login = () => {
         />
 
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button type="submit" className={classes.btn}>
             Login
           </Button>
         </div>
