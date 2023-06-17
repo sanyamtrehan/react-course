@@ -21,23 +21,37 @@ function App() {
       }
 
       const data = await response.json();
-      const transformedMovies = data.results.map((movieData) => ({
-        id: movieData.episode_id,
-        title: movieData.title,
-        openingText: movieData.opening_crawl,
-        releaseData: movieData.release_date,
-      }));
-      setMovies(transformedMovies);
+
+      const loadedMovies = [];
+      for (const key in data) {
+        loadedMovies.push({
+          id: key,
+          ...data[key],
+        });
+      }
+      setMovies(loadedMovies);
     } catch (error) {
       setError(error.message);
     }
     setIsLoading(false);
   }, []);
 
-  useEffect(() => fetchMoviesHandler(), [fetchMoviesHandler]);
+  useEffect(() => {
+    fetchMoviesHandler();
+  }, [fetchMoviesHandler]);
 
-  function addMovieHandler(movie) {
-    console.log(movie);
+  async function addMovieHandler(movie) {
+    const response = await fetch(
+      "https://react-course-c3946-default-rtdb.asia-southeast1.firebasedatabase.app/movies.json",
+      {
+        method: "POST",
+        body: JSON.stringify(movie),
+        headers: { "content-type": "application/json" },
+      }
+    );
+
+    const data = await response.json();
+    console.log(data);
   }
 
   let content = <p>Found no movies.</p>;
