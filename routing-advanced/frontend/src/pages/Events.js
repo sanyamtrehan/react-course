@@ -1,28 +1,30 @@
-import { Fragment } from "react";
-import { Link } from "react-router-dom";
+import { useEffect, useState } from "react";
 
-const DUMMY_EVENTS = [
-  {
-    id: "e1",
-    title: "Some event",
-  },
-  {
-    id: "e2",
-    title: "Another event",
-  },
-];
+import EventsList from "../components/EventsList";
 
-export default function EventsPage() {
+function EventsPage() {
+  const [isLoading, setIsLoading] = useState(false);
+  const [fetchedEvents, setFetchedEvents] = useState();
+  const [error, setError] = useState();
+
+  useEffect(() => {
+    async function fetchEvents() {
+      setIsLoading(true);
+
+      setIsLoading(false);
+    }
+
+    fetchEvents();
+  }, []);
   return (
-    <Fragment>
-      <h1>Events Page</h1>
-      <ul>
-        {DUMMY_EVENTS.map((event) => (
-          <li key={event.id}>
-            <Link to={event.id}>{event.title}</Link>
-          </li>
-        ))}
-      </ul>
-    </Fragment>
+    <>
+      <div style={{ textAlign: "center" }}>
+        {isLoading && <p>Loading...</p>}
+        {error && <p>{error}</p>}
+      </div>
+      {!isLoading && fetchedEvents && <EventsList events={fetchedEvents} />}
+    </>
   );
 }
+
+export default EventsPage;
