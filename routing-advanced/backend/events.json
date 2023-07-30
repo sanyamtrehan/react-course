@@ -1,34 +1,6 @@
 {
   "events": [
     {
-      "title": "fffdd",
-      "image": "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "date": "2023-06-30",
-      "description": "fd",
-      "id": "b9a46dc1-8cf5-45ec-9bc7-63ee0bd76b7f"
-    },
-    {
-      "title": "sdfds",
-      "image": "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "date": "2023-07-07",
-      "description": "sdfdsf",
-      "id": "a576c410-2090-4c75-af41-525cc231d9c6"
-    },
-    {
-      "title": "ref",
-      "image": "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "date": "2023-07-08",
-      "description": "reer",
-      "id": "4ce6b07d-a786-4277-8f1d-5706c707ceb7"
-    },
-    {
-      "title": "DUMMY",
-      "image": "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
-      "date": "2023-06-29",
-      "description": "TEST",
-      "id": "0d9c3a53-32d7-45d3-8a89-d2b2b9b325e8"
-    },
-    {
       "title": "A New Event",
       "image": "https://images.pexels.com/photos/268533/pexels-photo-268533.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2",
       "date": "2023-07-31",
